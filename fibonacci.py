@@ -11,7 +11,7 @@ def validation(terms):
         except ValueError:
             print("Invalid input. Please enter a positive integer.")
             terms = 0  # force loop again
-    return terms
+  return terms
 
 # Generating the Fibonacci sequence
 def fibonacci(terms):
@@ -19,12 +19,11 @@ def fibonacci(terms):
   sequence = []
   for i in range(terms):
     sequence.append(a)
-    print(a, end=" ")
     a, b = b, a + b
   return sequence
 
 # Printing the sequence
-def printSequence(terms, sequence):
+def printSequence(sequence):
   for i in sequence:
     print(i, end=" ")
 
@@ -35,11 +34,11 @@ except ValueError:
     terms = 0
 
 # Validate that the input is a positive integer.
-validation(terms)
+terms = validation(terms)
 
 
 print("Fibonacci sequence:")   
 
 # Use a for loop to print the Fibonacci sequence up to that many terms.
 sequence = fibonacci(terms)
-printSequence(terms, sequence)
+printSequence(sequence)
