@@ -3,9 +3,16 @@
 import re
 import string
 
-# Append words function
-
-def frequency(words, frequencies):
+# To get and validate the sentence input
+def get_sentence():
+    user_sentence = input("Enter a sentence: ")
+    while not is_sentence(user_sentence):
+        print("This does not meet the criteria for a sentence.")
+        user_sentence = input("Enter a sentence: ")
+    return user_sentence
+    
+# Calculate word frequencies
+def calculate_frequencies(words, frequencies):
     for word in words_list:
     if word in words:
         index = words.index(word)
@@ -14,6 +21,12 @@ def frequency(words, frequencies):
         words.append(word)
         frequencies.append(1)
 
+# Display the results
+def print_frequencies(words, frequencies):
+    for i in range(len(words)):
+        print(f"{words[i]}: {frequencies[i]}")
+
+    
 
 # This function is provided — do not modify
 def is_sentence(text):
@@ -28,7 +41,9 @@ def is_sentence(text):
     return True
 
 
-user_sentence = input("Enter a sentence: ")
+
+
+user_sentence = get_sentence
 
 while not is_sentence(user_sentence):
     print("This does not meet the criteria for a sentence.")
@@ -43,6 +58,4 @@ words_list = sentence.split()
 
 words = []
 frequencies = []
-frequency(words, frequencies)
-for i in range(len(words)):
-    print(f"{words[i]}: {frequencies[i]}")
+calculate_frequencies(words, frequencies)
