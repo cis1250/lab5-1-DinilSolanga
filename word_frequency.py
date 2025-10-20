@@ -12,14 +12,14 @@ def get_sentence():
     return user_sentence
     
 # Calculate word frequencies
-def calculate_frequencies(words, frequencies):
+def calculate_frequencies(words_list, words, frequencies):
     for word in words_list:
-    if word in words:
-        index = words.index(word)
-        frequencies[index] += 1
-    else:
-        words.append(word)
-        frequencies.append(1)
+        if word in words:
+            index = words.index(word)
+            frequencies[index] += 1
+        else:
+            words.append(word)
+            frequencies.append(1)
 
 # Display the results
 def print_frequencies(words, frequencies):
@@ -41,21 +41,20 @@ def is_sentence(text):
     return True
 
 
+# Main function
+def main():
+    sentence = get_sentence()
+    # Convert to lowercase and remove punctuation
+    sentence = sentence.lower()
+    for p in string.punctuation:
+        sentence = sentence.replace(p, "")
+    words_list = sentence.split()
 
+    words = []
+    frequencies = []
 
-user_sentence = get_sentence
+    calculate_frequencies(words_list, words, frequencies)
+    print_frequencies(words, frequencies)
 
-while not is_sentence(user_sentence):
-    print("This does not meet the criteria for a sentence.")
-    user_sentence = input("Enter a sentence: ")
-
-sentence = user_sentence.lower()
-
-for p in string.punctuation:
-    sentence = sentence.replace(p, "")
-
-words_list = sentence.split()
-
-words = []
-frequencies = []
-calculate_frequencies(words, frequencies)
+if __name__ == "__main__":
+    main()
